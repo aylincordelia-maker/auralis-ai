@@ -1,0 +1,21 @@
+# Ignore virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Uploaded voice samples and outputs (we don’t push generated audio)
+samples/
+outputs/
+
+# Optional environment files
+.env
+
+# MacOS stuff
+.DS_Store
+
+# VSCode settings (optional)
+.vscode/
