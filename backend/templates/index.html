@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Auralis AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo-img">
+        <span class="logo-text">Auralis AI</span>
+    </div>
+    <a href="#app" class="btn primary">Try Now</a>
+    <a href="javascript:void(0)" class="btn secondary" onclick="toggleAuthModal()">Login</a>
+</header>
+
+<section class="hero">
+    <h1>Clone Your Voice in Seconds</h1>
+    <p>Create realistic AI speech using your own voice.</p>
+</section>
+
+<img src="{{ url_for('static', filename='hero.png') }}" class="hero-img">
+
+<section id="app" class="demo-box">
+
+    <div class="demo-left">
+        <h2>Try Voice Cloning</h2>
+
+        <label class="upload-box">
+            <input type="file" id="voice" accept=".wav">
+            <span id="file-text">Upload Voice Sample (10–30 sec)</span>
+        </label>
+
+        <textarea id="text" placeholder="Type your text here..."></textarea>
+
+        <button onclick="cloneVoice()" class="btn primary big-btn">
+            Generate Voice
+        </button>
+
+        <p id="status"></p>
+        <div id="loader" class="loader" style="display:none;"></div>
+
+        <audio id="audio" controls></audio>
+
+        <a id="download" download="output.wav" class="btn secondary big-btn">
+            Download Audio
+        </a>
+    </div>
+
+    <div class="demo-right">
+        <h3>How it works</h3>
+
+        <div class="step">
+            <h4>1. Upload Your Voice</h4>
+            <p>Provide a 10–30 second sample. AI captures tone and style.</p>
+        </div>
+
+        <div class="step">
+            <h4>2. Enter Your Text</h4>
+            <p>Type any sentence and prepare it for voice generation.</p>
+        </div>
+
+        <div class="step">
+            <h4>3. Generate AI Voice</h4>
+            <p>Instantly convert text into realistic speech.</p>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Auralis AI </p>
+</footer>
+
+<div id="auth-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="toggleAuthModal()">&times;</span>
+
+        <div class="form-container" id="login-form">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+             <p id="login-message" class="form-message"></p> <!-- New message span -->
+            <p>Don't have an account? <span onclick="toggleForms()">Sign Up</span></p>
+        </div>
+
+        <div class="form-container" id="signup-form" style="display: none;">
+            <h2>Sign Up</h2>
+            <input type="text" id="signup-name" placeholder="Full Name" required>
+            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <button onclick="signup()">Sign Up</button>
+            <p id="signup-message" class="form-message"></p> <!-- New message span -->
+            <p>Already have an account? <span onclick="toggleForms()">Login</span></p>
+        </div>
+
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
